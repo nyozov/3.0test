@@ -4,8 +4,12 @@ import { SiEthereum } from 'react-icons/si'
 import { BsInfoCircle } from 'react-icons/bs'
 import { TransactionContext } from '../context/TransactionContext'
 import { Loader } from './'
+import { shortenAddress } from '../utils/shortenAddress'
+import { HiClipboardCopy } from 'react-icons/hi'
+import { useState } from 'react'
+import { FaEthereum } from 'react-icons/fa'
 
-const companyCommonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
+const companyCommonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-gray-800";
 
 const Input = ({placeholder, name, type, value, handleChange}) => (
   <input
@@ -14,13 +18,14 @@ const Input = ({placeholder, name, type, value, handleChange}) => (
   step="0.0001"
   value={value}
   onChange={(e)=> handleChange(e, name)}
-  className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
+  className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-gray-800 border-none text-sm white-glassmorphism"
   />
 )
 
 export default function Welcome() {
 
   const { connectWallet, connectedAccount, formData, sendTransaction, handleChange } = useContext(TransactionContext);
+  const [copyTooltip, setCopyTooltip] = useState(false)
 
   const handleSubmit = (e) => {
     const { addressTo, amount, keyword, message } = formData;
@@ -32,24 +37,36 @@ export default function Welcome() {
     sendTransaction();
 
   }
+
+  const copyToClipboard = async () => {
+    navigator.clipboard.writeText(connectedAccount);
+    
+     setCopyTooltip(true)
+     setTimeout(()=> {
+      setCopyTooltip(false)
+    },[2000])
+    
+
+  }
   return (
     <div className='flex w-full justify-center items-center'>
       <div className='flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4'>
         <div className='flex flex-1 justify-start flex-col mf:mr-10'>
-          <h1 className='text-3xl sm:text-5xl text-white text-gradient py-1'>
+          <h1 className='text-3xl font-bold sm:text-5xl custom-text-gradient py-1'>
             Send Crypto <br/> across the world
           </h1>
-          <p className='text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base'>
+          <p className='text-left mt-5 text-gray-400 font-light md:w-9/12 w-11/12 text-base'>
             Explore the crypto world. Buy and sell currencies with ease.
           </p>
+          
           {!connectedAccount && (
-          <button 
+          <div 
           type='button'
           onClick={connectWallet}
-          className='flex flex-row justify-center items-center my-5 bg-blue-500 p-3 rounded-md cursor-pointer hover:bg-blue-600'
+          className='gradient-bg-button flex flex-row justify-center items-center my-5 p-3 bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500 rounded-md cursor-pointer shadow hover:shadow-teal-200'
           >
-            <p className='text-white text-base font-semi-bold'>Connect Wallet</p>
-            </button>
+            <p className='text-gray-200 text-base font-bold'>Connect Wallet</p>
+            </div>
             )}
             <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${companyCommonStyles}`}>
@@ -81,15 +98,18 @@ export default function Welcome() {
                 <BsInfoCircle fontSize={17} color='#fff'/>
 
               </div>
-              <div>
-                <p className='text-white font-light text-sm'>
-                  address
+              <div className='flex'>
+                <div onClick={copyToClipboard} className='blue-glassmorphism text-gray-800 cursor-pointer hover:bg-gray-600 border-white border rounded p-1 max-w-fit'>
+                  <HiClipboardCopy/>
+                  </div>
+                <p className='ml-2 text-gray-800 font-light text-sm'>
+                  {shortenAddress(connectedAccount)}
                   
                   </p>
-                  <p className='text-white font-semibold text-lg mt-1 '>
-                  Ethereum
+                  {copyTooltip && <div className='absolute bottom-12 bg-black text-gray-800 rounded p-2 text-xs'
+                  >
+                    Copied to clipboard</div>}
                   
-                  </p>
               </div>
 
             </div>
@@ -107,7 +127,7 @@ export default function Welcome() {
               <button 
               type="button"
               onClick={handleSubmit}
-              className='text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer'
+              className='text-gray-800 w-full mt-2 border-[1px] p-2 border-[#3d4f7c] bg-blue-500 hover:bg-blue-600 rounded cursor-pointer'
               >
                 Send Now
 

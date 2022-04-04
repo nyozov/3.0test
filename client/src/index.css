@@ -14,18 +14,18 @@ body {
 }
 
 .gradient-bg-welcome {
-  background-color:#0f0e13;
+  background-color:#000000;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+    radial-gradient(at 0% 0%, rgb(38, 16, 148) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, rgb(56, 21, 78) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, rgb(92, 32, 172) 0, transparent 50%);
 }
 
 .gradient-bg-services {
-  background-color:#0f0e13;
+  background-color:#000000;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-    radial-gradient(at 50% 100%, hsla(225,39%,25%,1) 0, transparent 50%);
+    radial-gradient(at 0% 0%, rgb(0, 0, 0) 0, transparent 50%), 
+    radial-gradient(at 50% 100%, rgb(56, 21, 78) 0, transparent 50%);
 }
 
 .gradient-bg-transactions {
@@ -40,6 +40,18 @@ body {
   background-image: 
     radial-gradient(at 0% 100%, hsla(253,16%,7%,1) 0, transparent 53%), 
     radial-gradient(at 50% 150%, hsla(339,49%,30%,1) 0, transparent 50%);
+}
+
+.custom-text-gradient{
+  background: -webkit-linear-gradient(rgb(154, 22, 172), rgb(132, 164, 233));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+}
+
+.gradient-bg-button {
+  background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%)
 }
 
 .blue-glassmorphism {
