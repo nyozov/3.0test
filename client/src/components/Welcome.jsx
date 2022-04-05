@@ -7,7 +7,7 @@ import { Loader } from "./";
 import { shortenAddress } from "../utils/shortenAddress";
 import { HiClipboardCopy } from "react-icons/hi";
 import { SiBitcoin } from "react-icons/si";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import axios from 'axios'
 
 
@@ -21,7 +21,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
     step="0.0001"
     value={value}
     onChange={(e) => handleChange(e, name)}
-    className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-gray-800 border-none text-sm white-glassmorphism"
+    className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-gray-200 border-none text-sm white-glassmorphism"
   />
 );
 
@@ -37,6 +37,7 @@ export default function Welcome() {
   const [copyTooltip, setCopyTooltip] = useState(false);
   const [ coins, setCoins ] = useState(null)
   const [ loadingCoins, setLoadingCoins ] = useState(false);
+  const [ calcState, setCalcState] = useState(0)
 
   
   useEffect(()=>{
@@ -80,9 +81,14 @@ export default function Welcome() {
     setCopyTooltip(true);
     setTimeout(() => {
       setCopyTooltip(false);
-    }, [2000]);
+    }, [1000]);
   };
 
+    const calcInput = (e) => {
+      setCalcState(e.target.value)
+
+
+    }
  
   return (
     <div className="flex w-full  justify-center items-center">
@@ -109,7 +115,7 @@ export default function Welcome() {
           </motion.li >
           <motion.li variants={{hidden: {opacity: 0}, show: {opacity: 1}}}>
           <p className="text-left mt-5 text-gray-400 font-light md:w-9/12 w-11/12 text-base">
-            Explore the crypto world. Buy and sell currencies with ease.
+            Safe and secure cryptocurrency and message exchange using Web 3.0 blockchain techology.
           </p>
           </motion.li >
           <motion.li variants={{hidden: {opacity: 0}, show: {opacity: 1}}}>
@@ -150,12 +156,28 @@ export default function Welcome() {
               <p>{coins[1].symbol.toUpperCase()}</p>
               <p>${coins[1].current_price.toLocaleString()}</p>
              
-            
-              <p></p>
               <p
               className={coins[1].price_change_percentage_24h > 0 ? 'text-green-500' : 'text-red-500'}
               >{coins[1].price_change_percentage_24h > 0 ? '+' : ''}{Math.round(coins[1].price_change_percentage_24h * 100) / 100}%</p>
             </div>
+            <div className="h-[1px] w-full bg-gray-400 my-2" />
+            <div className='relative'>
+              <div className='text-white'>
+                <div className='text-center'>Calculator</div>
+                <input
+          type="number"
+          name="price"
+          id="price"
+          className="outline-none appearance-none bg-transparent backdrop-blur block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+          placeholder="USD"
+         onChange={calcInput}/>
+              <div>
+              {(calcState / coins[1].current_price).toFixed(8) > 0 && (calcState / coins[1].current_price).toFixed(8) || 0} Ethereum (ETH)
+              
+              </div>
+              </div>
+            </div>
+
             </>
 }
          
@@ -166,7 +188,7 @@ export default function Welcome() {
         </div>
         
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
-          <motion.div
+          {connectedAccount && (<motion.div
           initial={{ x: "300px", opacity: 0 }}
           transition={{ delay: 1, default: { duration: 1 } }}
           animate={{ x: 0, opacity: 1 }}
@@ -187,14 +209,24 @@ export default function Welcome() {
                 <p className="ml-2 text-white font-light text-sm">
                   {shortenAddress(connectedAccount)}
                 </p>
+                <AnimatePresence>
                 {copyTooltip && (
-                  <div className="absolute bottom-[-10px] left-12 bg-black text-white rounded p-2 text-xs">
+                  
+                  <motion.div
+                  key='1'
+                   initial={{ opacity: 0 }}
+                   animate={{ opacity: 1 }}
+                   exit={{ opacity: 0 }}
+                   className="absolute bottom-[-10px] left-12 bg-black text-white rounded p-2 text-xs">
                     Copied!
-                  </div>
+                  </motion.div>
+                 
                 )}
+                 </AnimatePresence>
               </div>
            
           </motion.div>
+          )}
           <motion.div
           initial={{ x: "-300px", opacity: 0 }}
           transition={{ delay: 1, default: { duration: 1 } }}

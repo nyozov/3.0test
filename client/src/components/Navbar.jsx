@@ -21,7 +21,7 @@ export default function Navbar() {
   const changeBackground = () => {
   
     if (window.scrollY > 80){
-     setNavState('fixed  backdrop-blur z-20 shadow')
+     setNavState('fixed  backdrop-blur')
   } else {
     setNavState('absolute')
   }
@@ -41,7 +41,7 @@ window.addEventListener('scroll', changeBackground)
            
             default: { duration: 1 },
           }}>
-    <nav className={` bg-transparent ${navState} w-full z-1 flex md:justify-center justify-between items-center p-4`}>
+    <nav className={`z-20 bg-transparent ${navState} w-full z-1 flex md:justify-center justify-between items-center p-4`}>
       <div className="md:flex-[0.5] text-xl flex-initial justify-center items-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500">
  
         E<span className='text-gray-300'>th</span>S<span className='text-gray-300'>end</span>
@@ -50,7 +50,7 @@ window.addEventListener('scroll', changeBackground)
       {["Market", "Exchange", "Tutorials"].map((item, index)=>(
         <NavbarItem key={item + index} title={item} />
       ))}
-      <li className='shadow  text-gray-300 hover:cursor-pointer font-semibold rounded py-1 px-4 border border-gray-300 hover:bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500 hover:shadow-teal-200'>
+      <li className='shadow  text-gray-300 hover:cursor-pointer rounded py-1 px-4 bg-teal-600 hover:bg-teal-800'>
         Login
       </li>
     </ul>
