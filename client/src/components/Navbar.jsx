@@ -42,7 +42,7 @@ window.addEventListener('scroll', changeBackground)
             default: { duration: 1 },
           }}>
     <nav className={`z-20 bg-transparent ${navState} w-full z-1 flex md:justify-center justify-between items-center p-4`}>
-      <div className="md:flex-[0.5] text-xl flex-initial justify-center items-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500">
+      <div className="logo md:flex-[0.5] text-xl flex-initial justify-center items-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500">
  
         E<span className='text-gray-300'>th</span>S<span className='text-gray-300'>end</span>
       </div>
