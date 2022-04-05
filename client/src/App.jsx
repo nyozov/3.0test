@@ -3,8 +3,9 @@ import { Navbar, Welcome, Footer, Services, Transactions, CryptoImg, MapImg } fr
 function App() {
   return (
     <div className="min-h-screen ">
+      <Navbar />
       <div className="gradient-bg-welcome">
-        <Navbar />
+        
         <CryptoImg/>
         <Welcome />
       </div>
