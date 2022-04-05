@@ -87,6 +87,10 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+.phone-shadow{
+  filter: drop-shadow(10px 10px 10px#000000);
+
+}
 .eth-card {
   background-color:#a099ff;
   background-image: 
@@ -115,5 +119,11 @@ body {
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .phone-image {
+    display: none;
   }
 }

@@ -45,10 +45,12 @@ export const TransactionProvider = ({ children }) => {
        
         // getAllTransactions
       } else {
+       setConnectedAccount(false)
         console.log("No accounts found");
       }
 
       console.log(accounts);
+     
     } catch (error) {}
   };
 

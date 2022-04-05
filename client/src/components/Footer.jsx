@@ -104,8 +104,15 @@ export default function Footer() {
                 </div>
             </div>
         </div>
-       
+        <div className="py-16 flex flex-col justify-center items-center">
    
+            
+                
+          
+            <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">
+              2022 EthSend. All Rights Reserved.
+              </p>
+        </div>
     </footer>
 </div>
   )

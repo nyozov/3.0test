@@ -9,6 +9,7 @@ import { HiClipboardCopy } from "react-icons/hi";
 import { SiBitcoin } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from 'axios'
+import phoneView from '../assets/phone-view.png'
 
 
 const companyCommonStyles =
@@ -114,9 +115,11 @@ export default function Welcome() {
           </h1>
           </motion.li >
           <motion.li variants={{hidden: {opacity: 0}, show: {opacity: 1}}}>
-          <p className="text-left mt-5 text-gray-400 font-light md:w-9/12 w-11/12 text-base">
+          <p className=" ml-2 text-left mt-5 text-gray-400 font-light text-base">
             Safe and secure cryptocurrency and message exchange using Web 3.0 blockchain techology.
+            
           </p>
+          {!connectedAccount && (<p className='text-gray-400 font-light text-base'>Connect to your Metamask to get started.</p>)}
           </motion.li >
           <motion.li variants={{hidden: {opacity: 0}, show: {opacity: 1}}}>
 
@@ -144,7 +147,7 @@ export default function Welcome() {
           
          
   
-           {coins !== null && 
+           {coins !== null &&
            <>
             <div className={` w-full text-center text-white `}>
            Current Exchange Rate
@@ -227,7 +230,7 @@ export default function Welcome() {
            
           </motion.div>
           )}
-          <motion.div
+          {connectedAccount && (<motion.div
           initial={{ x: "-300px", opacity: 0 }}
           transition={{ delay: 1, default: { duration: 1 } }}
           animate={{ x: 0, opacity: 1 }}
@@ -269,6 +272,18 @@ export default function Welcome() {
               </div>
             )}
           </motion.div>
+          )}
+          {!connectedAccount && (
+            <motion.div
+            initial={{ x: "-300px", opacity: 0 }}
+            transition={{ delay: 1, default: { duration: 1 } }}
+            animate={{ x: 0, opacity: 1 }}
+            className='flex justify-end phone-image'
+             >
+               <img className='h-auto w-72 phone-shadow' src={phoneView}/>
+              
+               </motion.div>
+          )}
         </div>
       </div>
     </div>
