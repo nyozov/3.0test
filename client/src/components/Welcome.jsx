@@ -93,7 +93,7 @@ export default function Welcome() {
  
   return (
     <div className="flex w-full  justify-center items-center">
-      <div className="flex mf:flex-row  flex-col items-start justify-between md:p-20 py-12 px-4">
+      <div className="flex mf:flex-row  flex-col items-start justify-between md:p-14 py-12 px-4">
         <div className="flex flex-1 justify-start flex-col mf:mr-10">
           
           <motion.ul
@@ -115,11 +115,12 @@ export default function Welcome() {
           </h1>
           </motion.li >
           <motion.li variants={{hidden: {opacity: 0}, show: {opacity: 1}}}>
-          <p className=" ml-2 text-left mt-5 text-gray-400 font-light text-base">
-            Safe and secure cryptocurrency and message exchange using Web 3.0 blockchain techology.
+          <p className="text-left mt-5 sm:w-[450px] text-white font-light text-base">
+            EthSend is a cryptocurrency platform that securely connects user transactions through the use of Web 3.0 blockchain technology.
             
           </p>
-          {!connectedAccount && (<p className='text-gray-400 font-light text-base'>Connect to your Metamask to get started.</p>)}
+
+          
           </motion.li >
           <motion.li variants={{hidden: {opacity: 0}, show: {opacity: 1}}}>
 
@@ -278,9 +279,9 @@ export default function Welcome() {
             initial={{ x: "-300px", opacity: 0 }}
             transition={{ delay: 1, default: { duration: 1 } }}
             animate={{ x: 0, opacity: 1 }}
-            className='flex justify-end phone-image'
+            className='flex phone-image p-5 w-full justify-end items-center '
              >
-               <img className='h-auto w-72 phone-shadow' src={phoneView}/>
+               <img className='h-auto w-64 phone-shadow' src={phoneView}/>
               
                </motion.div>
           )}
