@@ -1,19 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* html {
+html {
   padding: 0;
-  margin: 0;
+  max-width: 1920px;
+  margin: 0 auto;
+
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
 nav{
   font-family: 'Sora';
+  max-width: 1920px;
 }
 
 body {
   margin: 0;
+
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -110,9 +117,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 @layer utilities {
   input[type="number"]::-webkit-inner-spin-button,

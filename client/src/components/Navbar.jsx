@@ -37,7 +37,7 @@ window.addEventListener('scroll', changeBackground)
           animate={{ x: 0, y: 0, opacity: 1 }}
           transition={{
             delay: 1,
-            staggerChildren: 0.5,
+            
            
             default: { duration: 1 },
           }}>

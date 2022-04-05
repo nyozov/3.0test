@@ -92,7 +92,7 @@ export default function Welcome() {
     }
  
   return (
-    <div className="flex w-full  justify-center items-center">
+    <div className="flex w-full h-full justify-center items-center">
       <div className="flex mf:flex-row  flex-col items-start justify-between md:p-14 py-12 px-4">
         <div className="flex flex-1 justify-start flex-col mf:mr-10">
           
@@ -115,7 +115,7 @@ export default function Welcome() {
           </h1>
           </motion.li >
           <motion.li variants={{hidden: {opacity: 0}, show: {opacity: 1}}}>
-          <p className="text-left mt-5 sm:w-[450px] text-white font-light text-base">
+          <p className="text-left mt-5 sm:w-[450px] 2xl:w-11/12 text-white font-light text-base">
             EthSend is a cryptocurrency platform that securely connects user transactions through the use of Web 3.0 blockchain technology.
             
           </p>
