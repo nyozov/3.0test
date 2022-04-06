@@ -12,7 +12,7 @@ function App() {
         <Welcome />
       </div>
       <div className='gradient-bg-services'>
-      <MapImg/>
+   
       <Services />
       </div>
       <Transactions />
