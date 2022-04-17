@@ -128,7 +128,7 @@ export default function Welcome() {
             <div
               type="button"
               onClick={connectWallet}
-              className="gradient-bg-button flex flex-row justify-center items-center my-5 p-3 bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500 rounded-md cursor-pointer shadow hover:shadow-teal-200"
+              className=" flex flex-row justify-center items-center my-5 p-3 bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500 rounded-md cursor-pointer shadow hover:shadow-white"
             >
               <p className="text-gray-200 text-base font-bold">
                 Connect Wallet
