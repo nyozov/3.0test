@@ -33,6 +33,7 @@ export default function Welcome() {
     formData,
     sendTransaction,
     handleChange,
+    isLoading,
   } = useContext(TransactionContext);
 
   const [copyTooltip, setCopyTooltip] = useState(false);
@@ -128,7 +129,7 @@ export default function Welcome() {
             <div
               type="button"
               onClick={connectWallet}
-              className=" flex flex-row justify-center items-center my-5 p-3 bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500 rounded-md cursor-pointer shadow hover:shadow-white"
+              className=" flex flex-row justify-center items-center my-5 p-3 bg-gradient-to-r from-purple-500 via-teal-500 to-purple-500 rounded-md  hover:from-purple-600 hover:via-teal-600 hover:to-purple-600 cursor-pointer shadow"
             >
               <p className="text-gray-200 text-base font-bold">
                 Connect Wallet
@@ -261,7 +262,7 @@ export default function Welcome() {
               handleChange={handleChange}
             />
             <div className="h-[1px] w-full bg-gray-400 my-2" />
-            {false ? (
+            {isLoading ? (
               <Loader />
             ) : (
               <div

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Navbar, Welcome, Footer, Services, Transactions, CryptoImg, MapImg } from "./components";
+import { TransactionContext } from "./context/TransactionContext";
 
 function App() {
+  const { connectedAccount } = useContext(TransactionContext)
   return (
     <div className="min-h-screen">
       
@@ -13,7 +16,7 @@ function App() {
       </div>
       <div className='gradient-bg-services'>
    
-      <Services />
+      {!connectedAccount && <Services />}
       </div>
       <Transactions />
       <Footer />
